@@ -5,12 +5,16 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.meliksahcakir.spacedelivery.R
+import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
 import com.meliksahcakir.spacedelivery.main.MainActivity
 import com.meliksahcakir.spacedelivery.utils.EventObserver
+import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 
 class SplashActivity : AppCompatActivity() {
 
-    private val viewModel by viewModels<SplashViewModel>()
+    private val viewModel by viewModels<SplashViewModel> {
+        ViewModelFactory((application as SpaceDeliveryApplication).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

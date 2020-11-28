@@ -4,11 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
 import com.meliksahcakir.spacedelivery.utils.Event
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel : ViewModel() {
+class SplashViewModel(private val repository: IStationsRepository) : ViewModel() {
 
     private var initialized = false
 
@@ -25,7 +26,9 @@ class SplashViewModel : ViewModel() {
 
     private fun start() {
         if (!initialized) {
-            //TODO retrieve remote data
+            viewModelScope.launch {
+                repository.refreshStations()
+            }
             initialized = true
         }
     }
