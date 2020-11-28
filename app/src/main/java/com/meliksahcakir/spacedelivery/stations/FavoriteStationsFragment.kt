@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.activityViewModels
 import com.meliksahcakir.spacedelivery.R
+import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
+import com.meliksahcakir.spacedelivery.main.MainViewModel
+import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 
 class FavoriteStationsFragment : Fragment() {
 
@@ -16,7 +17,9 @@ class FavoriteStationsFragment : Fragment() {
         fun newInstance() = FavoriteStationsFragment()
     }
 
-    private val favViewModel by viewModels<FavoriteStationsViewModel>()
+    private val mainViewModel by activityViewModels<MainViewModel> {
+        ViewModelFactory((requireActivity().application as SpaceDeliveryApplication).repository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

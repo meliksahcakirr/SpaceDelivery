@@ -12,14 +12,18 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.slider.Slider
 import com.google.android.material.snackbar.Snackbar
 import com.meliksahcakir.spacedelivery.R
+import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
 import com.meliksahcakir.spacedelivery.main.MainViewModel
 import com.meliksahcakir.spacedelivery.utils.EventObserver
+import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.shuttle_fragment.*
 
 class ShuttleFragment : Fragment() {
 
     private val shuttleViewModel by activityViewModels<ShuttleViewModel>()
-    private val mainViewModel by activityViewModels<MainViewModel>()
+    private val mainViewModel by activityViewModels<MainViewModel> {
+        ViewModelFactory((requireActivity().application as SpaceDeliveryApplication).repository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

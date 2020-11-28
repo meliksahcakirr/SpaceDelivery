@@ -3,6 +3,7 @@ package com.meliksahcakir.spacedelivery.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
+import com.meliksahcakir.spacedelivery.main.MainViewModel
 import com.meliksahcakir.spacedelivery.splash.SplashViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -13,6 +14,8 @@ class ViewModelFactory(private val repository: IStationsRepository) :
             when {
                 isAssignableFrom(SplashViewModel::class.java) ->
                     SplashViewModel(repository)
+                isAssignableFrom(MainViewModel::class.java) ->
+                    MainViewModel(repository)
                 else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
         } as T

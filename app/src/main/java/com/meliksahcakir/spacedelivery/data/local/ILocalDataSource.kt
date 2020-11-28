@@ -8,6 +8,8 @@ interface ILocalDataSource {
 
     fun observeStations(): LiveData<Result<List<Station>>>
 
+    fun observeFavoriteStations(): LiveData<Result<List<Station>>>
+
     suspend fun getStations(): Result<List<Station>>
 
     suspend fun getStation(name: String): Result<Station>
@@ -21,4 +23,6 @@ interface ILocalDataSource {
     suspend fun deleteStations()
 
     suspend fun deleteStationByName(name: String)
+
+    suspend fun resetStations()
 }

@@ -5,23 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearSnapHelper
+import com.google.android.material.snackbar.Snackbar
 import com.meliksahcakir.spacedelivery.R
+import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
+import com.meliksahcakir.spacedelivery.data.Station
 import com.meliksahcakir.spacedelivery.main.MainViewModel
 import com.meliksahcakir.spacedelivery.utils.EventObserver
+import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.stations_fragment.*
 
-class StationsFragment : Fragment() {
+class StationsFragment : Fragment(), StationListAdapterListener {
 
-    companion object {
-        fun newInstance() = StationsFragment()
+    private val mainViewModel by activityViewModels<MainViewModel> {
+        ViewModelFactory((requireActivity().application as SpaceDeliveryApplication).repository)
     }
 
-    private val viewModel by viewModels<StationsViewModel>()
-    private val mainViewModel by activityViewModels<MainViewModel>()
+    private lateinit var mAdapter: StationListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +41,32 @@ class StationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mAdapter = StationListAdapter(this)
+        stationRecyclerView.apply {
+            adapter = mAdapter
+            LinearSnapHelper().attachToRecyclerView(this)
+        }
+
+        mainViewModel.stations.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                emptyGroup.isVisible = true
+                stationRecyclerView.isVisible = false
+                currentStationTextView.isVisible = false
+            } else {
+                emptyGroup.isVisible = false
+                stationRecyclerView.isVisible = true
+                currentStationTextView.isVisible = true
+            }
+            mAdapter.submitList(it)
+        }
+
+        mainViewModel.foundStation.observe(viewLifecycleOwner, EventObserver {
+            val position = mAdapter.currentList.indexOf(it)
+            if (position != -1) {
+                stationRecyclerView.smoothScrollToPosition(position)
+            }
+        })
 
         mainViewModel.shuttleName.observe(viewLifecycleOwner) {
             shuttleNameTextView.text = it
@@ -63,10 +94,31 @@ class StationsFragment : Fragment() {
 
         mainViewModel.currentStation.observe(viewLifecycleOwner) {
             currentStationTextView.text = it.name
+            mAdapter.currentStation = it
         }
 
         mainViewModel.gameOver.observe(viewLifecycleOwner, EventObserver {
-            Toast.makeText(requireContext(), "Game Over!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
+
+        mainViewModel.snackBarMessage.observe(viewLifecycleOwner, EventObserver {
+            val snackBar = Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT)
+            snackBar.show()
+        })
+
+        searchEditText.doAfterTextChanged {
+            val text = it.toString()
+            if(text != "") {
+                mainViewModel.onSearch(text)
+            }
+        }
+    }
+
+    override fun onTravelClicked(station: Station) {
+        mainViewModel.onTravelClicked(station)
+    }
+
+    override fun onFavoriteChanged(station: Station, favorite: Boolean) {
+        mainViewModel.onFavoriteClicked(station, favorite)
     }
 }

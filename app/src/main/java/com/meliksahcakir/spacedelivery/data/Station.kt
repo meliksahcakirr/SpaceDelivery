@@ -3,6 +3,7 @@ package com.meliksahcakir.spacedelivery.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlin.math.hypot
 
 @Entity(tableName = "Stations")
 data class Station(
@@ -20,7 +21,13 @@ data class Station(
     @ColumnInfo(name = "need")
     var need: Int = 0,
     @ColumnInfo(name = "favorite")
-    var favorite: Boolean = false
+    var favorite: Boolean = false,
+    @ColumnInfo(name = "currentStock")
+    var currentStock: Int = 0,
+    @ColumnInfo(name = "currentNeed")
+    var currentNeed: Int = 0,
+    @ColumnInfo(name = "completed")
+    var completed: Boolean = false
 ) {
 
     companion object {
@@ -29,15 +36,19 @@ data class Station(
 
     fun deliverPackets(numberOfPackets: Int): Int {
         var remaining = 0
-        if (numberOfPackets > need) {
-            remaining = numberOfPackets - need
-            stock += need
-            need = 0
+        if (numberOfPackets > currentNeed) {
+            remaining = numberOfPackets - currentNeed
+            currentStock += currentNeed
+            currentNeed = 0
         } else {
-            stock += numberOfPackets
-            need -= numberOfPackets
+            currentStock += numberOfPackets
+            currentNeed -= numberOfPackets
         }
         return remaining
+    }
+
+    fun calculateEus(other: Station): Int {
+        return hypot(coordinateX - other.coordinateX, coordinateY - other.coordinateY).toInt()
     }
 }
 

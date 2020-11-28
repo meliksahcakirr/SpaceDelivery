@@ -18,6 +18,10 @@ class StationsRepository(
         return localDataSource.observeStations()
     }
 
+    override fun observeFavoriteStations(): LiveData<Result<List<Station>>> {
+        return localDataSource.observeFavoriteStations()
+    }
+
     override suspend fun getStations(forceUpdate: Boolean): Result<List<Station>> {
         if (forceUpdate) {
             try {
@@ -33,6 +37,8 @@ class StationsRepository(
         val remoteStations = remoteDataSource.getStations()
         if (remoteStations is Result.Success) {
             for (remoteStation in remoteStations.data) {
+                remoteStation.currentStock = remoteStation.stock
+                remoteStation.currentNeed = remoteStation.need
                 val localResult = localDataSource.getStation(remoteStation.name)
                 if (localResult is Result.Success) {
                     val localStation = localResult.data
@@ -44,6 +50,7 @@ class StationsRepository(
                 localDataSource.addStation(station)
             }
         } else {
+            localDataSource.resetStations()
             throw (remoteStations as Result.Error).exception
         }
     }
@@ -77,5 +84,9 @@ class StationsRepository(
 
     override suspend fun deleteStation(name: String) {
         localDataSource.deleteStationByName(name)
+    }
+
+    override suspend fun resetStations() {
+        localDataSource.resetStations()
     }
 }

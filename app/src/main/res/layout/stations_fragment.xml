@@ -145,7 +145,7 @@
                     android:inputType="text"
                     android:paddingStart="10dp"
                     android:paddingEnd="5dp"
-                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Body1"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -174,7 +174,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/planetItem"
+            app:layout_constraintTop_toBottomOf="@id/stationRecyclerView"
             tools:text="DÜNYA" />
 
         <ImageView
@@ -208,18 +208,21 @@
             app:layout_constraintVertical_bias="0"
             tools:text="@string/there_is_no_planet_to_travel" />
 
-        <include
-            android:id="@+id/planetItem"
-            layout="@layout/planet_item"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stationRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/currentStationTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchCardView" />
+            app:layout_constraintTop_toBottomOf="@id/searchCardView"
+            tools:itemCount="5"
+            tools:listitem="@layout/planet_item" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/middleGuideline"
@@ -229,6 +232,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Group
+            android:id="@+id/emptyGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"

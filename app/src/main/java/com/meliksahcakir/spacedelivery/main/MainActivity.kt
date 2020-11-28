@@ -10,11 +10,15 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.meliksahcakir.spacedelivery.R
+import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
 import com.meliksahcakir.spacedelivery.shuttle.ShuttleFragment
+import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory((application as SpaceDeliveryApplication).repository)
+    }
     private lateinit var host: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {

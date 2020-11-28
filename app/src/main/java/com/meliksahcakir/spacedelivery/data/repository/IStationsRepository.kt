@@ -8,6 +8,8 @@ interface IStationsRepository {
 
     fun observeStations(): LiveData<Result<List<Station>>>
 
+    fun observeFavoriteStations(): LiveData<Result<List<Station>>>
+
     suspend fun getStations(forceUpdate: Boolean = false): Result<List<Station>>
 
     suspend fun refreshStations()
@@ -23,4 +25,6 @@ interface IStationsRepository {
     suspend fun deleteStations()
 
     suspend fun deleteStation(name: String)
+
+    suspend fun resetStations()
 }

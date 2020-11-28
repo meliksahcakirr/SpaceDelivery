@@ -10,6 +10,9 @@ interface StationsDao {
     @Query("SELECT * FROM Stations")
     fun observeStations(): LiveData<List<Station>>
 
+    @Query("SELECT * FROM Stations WHERE favorite = 1")
+    fun observeFavoriteStations(): LiveData<List<Station>>
+
     @Query("SELECT * FROM Stations")
     suspend fun getStations(): List<Station>
 
@@ -24,6 +27,9 @@ interface StationsDao {
 
     @Query("UPDATE Stations SET favorite = :favorite WHERE name = :name")
     suspend fun updateFavStatus(name: String, favorite: Boolean)
+
+    @Query("UPDATE Stations SET currentStock = stock, currentNeed = need, completed = 0")
+    suspend fun resetStations()
 
     @Query("DELETE FROM Stations")
     suspend fun deleteStations()

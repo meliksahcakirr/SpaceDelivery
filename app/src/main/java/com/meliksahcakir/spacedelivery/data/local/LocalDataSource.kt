@@ -19,6 +19,12 @@ class LocalDataSource internal constructor(
         }
     }
 
+    override fun observeFavoriteStations(): LiveData<Result<List<Station>>> {
+        return stationsDao.observeFavoriteStations().map {
+            Result.Success(it)
+        }
+    }
+
     override suspend fun getStations(): Result<List<Station>> = withContext(ioDispatcher) {
         return@withContext try {
             Result.Success(stationsDao.getStations())
@@ -58,5 +64,9 @@ class LocalDataSource internal constructor(
 
     override suspend fun deleteStationByName(name: String) {
         stationsDao.deleteStationByName(name)
+    }
+
+    override suspend fun resetStations() {
+        stationsDao.resetStations()
     }
 }
