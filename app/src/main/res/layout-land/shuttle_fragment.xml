@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/space_background"
+        tools:context=".shuttle.ShuttleFragment">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline4"
+            android:textColor="@color/redLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:elevation="24dp"
+            android:src="@drawable/ic_shuttle"
+            app:layout_constraintBottom_toBottomOf="@id/circleImageView"
+            app:layout_constraintEnd_toEndOf="@id/circleImageView"
+            app:layout_constraintStart_toStartOf="@id/circleImageView"
+            app:layout_constraintTop_toTopOf="@id/circleImageView" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="80dp"
+            android:elevation="16dp"
+            android:src="@android:color/transparent"
+            app:civ_border_overlay="true"
+            app:civ_circle_background_color="@color/blueGrayLight"
+            app:layout_constraintBottom_toTopOf="@id/materialCardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/materialCardView" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/startButton"
+            app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+            app:layout_constraintStart_toStartOf="@id/startGuideLine"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            android:layout_marginTop="60dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="50dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/availablePointsTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/available_points"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+                    app:layout_constraintBottom_toBottomOf="@id/availablePointsTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/availablePointsTextView" />
+
+                <TextView
+                    android:id="@+id/availablePointsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="12"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline5"
+                    app:layout_constraintStart_toEndOf="@id/availablePointsTitleTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/shuttleNameEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:focusable="true"
+                    android:hint="@string/shuttle_name"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="5dp"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/availablePointsTextView" />
+
+                <TextView
+                    android:id="@+id/durabilityTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/durability"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                    app:layout_constraintBottom_toBottomOf="@id/durabilityTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/durabilityTextView" />
+
+                <TextView
+                    android:id="@+id/durabilityTextView"
+                    style="@style/NumberTextViewStyle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/shuttleNameEditText" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/durabilitySlider"
+                    style="@style/FeatureSliderStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/durabilityTextView" />
+
+                <TextView
+                    android:id="@+id/velocityTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/velocity"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                    app:layout_constraintBottom_toBottomOf="@id/velocityTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/velocityTextView" />
+
+                <TextView
+                    android:id="@+id/velocityTextView"
+                    style="@style/NumberTextViewStyle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/durabilitySlider" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/velocitySlider"
+                    style="@style/FeatureSliderStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/velocityTextView" />
+
+                <TextView
+                    android:id="@+id/capacityTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/capacity"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                    app:layout_constraintBottom_toBottomOf="@id/capacityTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/capacityTextView" />
+
+                <TextView
+                    android:id="@+id/capacityTextView"
+                    style="@style/NumberTextViewStyle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/velocitySlider" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/capacitySlider"
+                    style="@style/FeatureSliderStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/capacityTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:insetBottom="0dp"
+            android:text="@string/start"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+            app:layout_constraintStart_toStartOf="@id/startGuideLine"
+            app:layout_constraintTop_toBottomOf="@id/materialCardView" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="30dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

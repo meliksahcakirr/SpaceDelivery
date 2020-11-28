@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.SpaceDelivery" parent="Base.Theme.SpaceDelivery"/>
+    <style name="Theme.SpaceDelivery" parent="Base.Theme.SpaceDelivery" />
 
     <style name="Base.Theme.SpaceDelivery" parent="Base.Theme.App">
         <item name="colorPrimary">@color/blueGrayDark</item>
@@ -25,14 +25,46 @@
         <item name="textAppearanceSubtitle2">@style/TextAppearance.SpaceDelivery.Subtitle2</item>
         <item name="textAppearanceBody1">@style/TextAppearance.SpaceDelivery.Body1</item>
         <item name="textAppearanceBody2">@style/TextAppearance.SpaceDelivery.Body2</item>
-        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert
+        </item>
     </style>
 
     <style name="Base.Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:statusBarColor">@color/blueGrayDark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?attr/colorControlHighlight</item>
+        <item name="android:navigationBarColor">@color/redLight</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">
+            ?attr/colorControlHighlight
+        </item>
     </style>
+
+    <style name="MaterialCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">8dp</item>
+    </style>
+
+    <style name="NumberTextViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:background">@drawable/dark_blue_background</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.SpaceDelivery.Subtitle4</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FeatureSliderStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:stepSize">1</item>
+        <item name="android:value">1</item>
+        <item name="android:valueFrom">0</item>
+        <item name="android:valueTo">13</item>
+        <item name="android:textAlignment">center</item>
+        <item name="labelBehavior">floating</item>
+        <item name="trackColorActive">@color/adaptiveOrange</item>
+        <item name="trackHeight">10dp</item>
+    </style>
+
 </resources>

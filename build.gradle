@@ -16,6 +16,7 @@ buildscript {
         version_room = "2.2.5"
         version_fragment = "1.2.5"
         version_timber = "4.7.1"
+        version_circle_image_view = "3.1.0"
     }
     repositories {
         google()

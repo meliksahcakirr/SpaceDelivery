@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Space Delivery</string>
+    <string name="start">START</string>
+    <string name="shuttle_name">Shuttle Name</string>
+    <string name="feature">Feature</string>
+    <string name="durability">Durability</string>
+    <string name="velocity">Velocity</string>
+    <string name="capacity">Capacity</string>
+    <string name="available_points">Available Points:</string>
+    <string name="shuttle_name_cannot_be_empty">Shuttle name cannot be empty.</string>
 </resources>
