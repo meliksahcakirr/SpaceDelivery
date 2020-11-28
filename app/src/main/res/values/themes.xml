@@ -44,7 +44,7 @@
         <item name="cardElevation">8dp</item>
     </style>
 
-    <style name="NumberTextViewStyle" parent="Widget.MaterialComponents.CardView">
+    <style name="NumberTextViewStyle">
         <item name="android:layout_height">30dp</item>
         <item name="android:layout_width">30dp</item>
         <item name="android:background">@drawable/dark_blue_background</item>
@@ -56,7 +56,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="FeatureSliderStyle" parent="Widget.MaterialComponents.CardView">
+    <style name="FeatureSliderStyle">
         <item name="android:stepSize">1</item>
         <item name="android:value">1</item>
         <item name="android:valueFrom">0</item>
@@ -65,6 +65,22 @@
         <item name="labelBehavior">floating</item>
         <item name="trackColorActive">@color/adaptiveOrange</item>
         <item name="trackHeight">10dp</item>
+    </style>
+
+    <style name="ShuttleTitleTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.SpaceDelivery.Headline6</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ShuttleTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.SpaceDelivery.Headline5</item>
+        <item name="android:textColor">@color/adaptiveOrange</item>
     </style>
 
 </resources>

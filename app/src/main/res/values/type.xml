@@ -41,14 +41,14 @@
     <style name="TextAppearance.SpaceDelivery.Subtitle3" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:fontFamily">@font/montserrat_semibold</item>
         <item name="fontFamily">@font/montserrat_semibold</item>
-        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="TextAppearance.SpaceDelivery.Subtitle4" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:fontFamily">@font/montserrat_light</item>
         <item name="fontFamily">@font/montserrat_light</item>
-        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textSize">14sp</item>
     </style>
 

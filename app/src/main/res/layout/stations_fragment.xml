@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +8,123 @@
     tools:context=".stations.StationsFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Stations Fragment" />
+        android:id="@+id/ugsTitleTextView"
+        style="@style/ShuttleTitleTextViewStyle"
+        android:layout_marginTop="20dp"
+        android:text="UGS"
+        app:layout_constraintEnd_toStartOf="@id/eusTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/eusTitleTextView"
+        style="@style/ShuttleTitleTextViewStyle"
+        android:layout_marginTop="20dp"
+        android:text="EUS"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+        app:layout_constraintEnd_toStartOf="@id/dsTitleTextView"
+        app:layout_constraintStart_toEndOf="@id/ugsTitleTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dsTitleTextView"
+        style="@style/ShuttleTitleTextViewStyle"
+        android:layout_marginTop="20dp"
+        android:text="DS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/eusTitleTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ugsTextView"
+        style="@style/ShuttleTextViewStyle"
+        app:layout_constraintEnd_toEndOf="@id/ugsTitleTextView"
+        app:layout_constraintStart_toStartOf="@id/ugsTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/ugsTitleTextView"
+        tools:text="100000" />
+
+    <TextView
+        android:id="@+id/eusTextView"
+        style="@style/ShuttleTextViewStyle"
+        app:layout_constraintEnd_toEndOf="@id/eusTitleTextView"
+        app:layout_constraintStart_toStartOf="@id/eusTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/eusTitleTextView"
+        tools:text="100000" />
+
+    <TextView
+        android:id="@+id/dsTextView"
+        style="@style/ShuttleTextViewStyle"
+        app:layout_constraintEnd_toEndOf="@id/dsTitleTextView"
+        app:layout_constraintStart_toStartOf="@id/dsTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/dsTitleTextView"
+        tools:text="100000" />
+
+    <TextView
+        android:id="@+id/shuttleNameTextView"
+        style="@style/ShuttleTitleTextViewStyle"
+        android:layout_margin="20dp"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@id/middleGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ugsTextView"
+        tools:text="WhartonX" />
+
+    <ImageView
+        android:id="@+id/healthImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_heart"
+        app:layout_constraintBottom_toBottomOf="@id/shuttleNameTextView"
+        app:layout_constraintEnd_toStartOf="@id/dsTextView"
+        app:layout_constraintTop_toTopOf="@id/shuttleNameTextView"
+        app:tint="@color/redDark" />
+
+    <TextView
+        android:id="@+id/healthTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle4"
+        app:layout_constraintBottom_toBottomOf="@id/shuttleNameTextView"
+        app:layout_constraintEnd_toStartOf="@id/timerImageView"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/healthImageView"
+        app:layout_constraintTop_toTopOf="@id/shuttleNameTextView"
+        tools:text="100" />
+
+    <ImageView
+        android:id="@+id/timerImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/ic_timer"
+        app:layout_constraintBottom_toBottomOf="@id/shuttleNameTextView"
+        app:layout_constraintStart_toStartOf="@id/dsTextView"
+        app:layout_constraintTop_toTopOf="@id/shuttleNameTextView"
+        app:tint="@color/adaptiveOrange" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle4"
+        app:layout_constraintBottom_toBottomOf="@id/shuttleNameTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/timerImageView"
+        app:layout_constraintTop_toTopOf="@id/shuttleNameTextView"
+        tools:text="130 s" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middleGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

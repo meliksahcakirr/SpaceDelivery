@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             builder.setMessage(getString(R.string.do_you_want_to_start_over))
             builder.setPositiveButton(R.string.yes) { dialog, _ ->
                 dialog.cancel()
+                viewModel.resetTimer()
                 host.navController.navigateUp()
             }
             builder.setNegativeButton(R.string.no) { dialog, _ ->
