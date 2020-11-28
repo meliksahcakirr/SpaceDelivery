@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "Stations")
 data class Station(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "name")
@@ -18,7 +18,9 @@ data class Station(
     @ColumnInfo(name = "stock")
     var stock: Int = 0,
     @ColumnInfo(name = "need")
-    var need: Int = 0
+    var need: Int = 0,
+    @ColumnInfo(name = "favorite")
+    var favorite: Boolean = false
 ) {
 
     companion object {
