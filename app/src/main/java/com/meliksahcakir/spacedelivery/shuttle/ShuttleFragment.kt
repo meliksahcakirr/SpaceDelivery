@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.slider.Slider
 import com.google.android.material.snackbar.Snackbar
 import com.meliksahcakir.spacedelivery.R
@@ -60,7 +60,7 @@ class ShuttleFragment : Fragment() {
         }
         shuttleViewModel.navigateToMainScreenEvent.observe(viewLifecycleOwner, EventObserver {
             mainViewModel.onShuttleSelected(it)
-            Toast.makeText(requireContext(), "Have Fun ${it.name}", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(ShuttleFragmentDirections.actionShuttleFragmentToStationsFragment())
         })
         shuttleViewModel.snackBarMessage.observe(viewLifecycleOwner, EventObserver {
             val snackBar = Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT)

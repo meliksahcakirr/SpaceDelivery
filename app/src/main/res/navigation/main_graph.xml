@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/shuttleFragment">
+
+    <fragment
+        android:id="@+id/shuttleFragment"
+        android:name="com.meliksahcakir.spacedelivery.shuttle.ShuttleFragment"
+        android:label="shuttle_fragment"
+        tools:layout="@layout/shuttle_fragment" >
+        <action
+            android:id="@+id/action_shuttleFragment_to_StationsFragment"
+            app:destination="@id/stationsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteStationsFragment"
+        android:name="com.meliksahcakir.spacedelivery.stations.FavoriteStationsFragment"
+        android:label="favorite_stations_fragment"
+        tools:layout="@layout/favorite_stations_fragment" />
+
+    <fragment
+        android:id="@+id/stationsFragment"
+        android:name="com.meliksahcakir.spacedelivery.stations.StationsFragment"
+        android:label="station_fragment"
+        tools:layout="@layout/stations_fragment" />
+
+</navigation>

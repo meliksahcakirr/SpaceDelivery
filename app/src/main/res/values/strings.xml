@@ -8,4 +8,9 @@
     <string name="capacity">Capacity</string>
     <string name="available_points">Available Points:</string>
     <string name="shuttle_name_cannot_be_empty">Shuttle name cannot be empty.</string>
+    <string name="stations">Stations</string>
+    <string name="favorites">Favorites</string>
+    <string name="do_you_want_to_start_over">Do you want to start over?</string>
+    <string name="yes">yes</string>
+    <string name="no">No</string>
 </resources>
