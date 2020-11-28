@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.meliksahcakir.spacedelivery.data.Shuttle
+import com.meliksahcakir.spacedelivery.data.Station
 import com.meliksahcakir.spacedelivery.utils.Event
 
 class MainViewModel : ViewModel() {
@@ -34,6 +35,9 @@ class MainViewModel : ViewModel() {
 
     private val handler = Handler()
 
+    private val _currentStation = MutableLiveData<Station>(Station.EARTH)
+    val currentStation: LiveData<Station> = _currentStation
+
     private var tickRunnable = object : Runnable {
         override fun run() {
             _timer.value?.let {
@@ -61,6 +65,7 @@ class MainViewModel : ViewModel() {
         _health.value = 100
         handler.postDelayed(tickRunnable, 1000)
         _shuttleName.value = shuttle.name
+        _currentStation.value = Station.EARTH
     }
 
     override fun onCleared() {

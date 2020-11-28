@@ -13,4 +13,7 @@
     <string name="do_you_want_to_start_over">Do you want to start over?</string>
     <string name="yes">yes</string>
     <string name="no">No</string>
+    <string name="search_planet">Search Planet</string>
+    <string name="there_is_no_planet_to_travel">There is no planet to travel</string>
+    <string name="travel">Travel</string>
 </resources>

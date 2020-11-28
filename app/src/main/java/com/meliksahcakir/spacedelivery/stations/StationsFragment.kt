@@ -61,6 +61,10 @@ class StationsFragment : Fragment() {
             timerTextView.text = "$it s"
         }
 
+        mainViewModel.currentStation.observe(viewLifecycleOwner) {
+            currentStationTextView.text = it.name
+        }
+
         mainViewModel.gameOver.observe(viewLifecycleOwner, EventObserver {
             Toast.makeText(requireContext(), "Game Over!", Toast.LENGTH_SHORT).show()
         })

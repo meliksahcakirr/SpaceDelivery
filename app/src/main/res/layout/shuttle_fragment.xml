@@ -53,6 +53,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
+            style="@style/MaterialCardViewStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/startButton"
@@ -90,21 +91,39 @@
                     app:layout_constraintStart_toEndOf="@id/availablePointsTitleTextView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/shuttleNameEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@android:drawable/editbox_background_normal"
-                    android:focusable="true"
-                    android:hint="@string/shuttle_name"
-                    android:inputType="text"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="5dp"
-                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/shuttleNameCardView"
+                    style="@style/MaterialCardViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/availablePointsTextView" />
+                    app:layout_constraintTop_toBottomOf="@id/availablePointsTextView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/shuttleNameEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="?android:colorBackground"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:hint="@string/shuttle_name"
+                            android:inputType="text"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="5dp"
+                            android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <TextView
                     android:id="@+id/durabilityTitleTextView"
@@ -124,7 +143,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/shuttleNameEditText" />
+                    app:layout_constraintTop_toBottomOf="@id/shuttleNameCardView" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/durabilitySlider"
@@ -199,14 +218,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/startButton"
+            style="@style/ButtonStyle"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:insetBottom="0dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/start"
-            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
-            app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/endGuideLine"
             app:layout_constraintStart_toStartOf="@id/startGuideLine"

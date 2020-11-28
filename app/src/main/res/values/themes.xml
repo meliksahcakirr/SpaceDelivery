@@ -32,11 +32,8 @@
     <style name="Base.Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/blueGrayDark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:navigationBarColor">@color/redLight</item>
+        <item name="android:navigationBarColor">?android:colorBackground</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
-        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">
-            ?attr/colorControlHighlight
-        </item>
     </style>
 
     <style name="MaterialCardViewStyle" parent="Widget.MaterialComponents.CardView">
@@ -81,6 +78,12 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textAppearance">@style/TextAppearance.SpaceDelivery.Headline5</item>
         <item name="android:textColor">@color/adaptiveOrange</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">10dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.SpaceDelivery.Headline6</item>
     </style>
 
 </resources>

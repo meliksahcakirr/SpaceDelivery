@@ -4,6 +4,5 @@ data class Shuttle(
     val name: String = "",
     val capacity: Int = 1,
     val velocity: Int = 1,
-    val durability: Int = 1,
-    var currentStation: Station = Station.EARTH
+    val durability: Int = 1
 )

@@ -6,12 +6,15 @@
     </style>
 
     <style name="TextAppearance.SpaceDelivery.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="fontFamily">@font/montserrat_semibold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
     <style name="TextAppearance.SpaceDelivery.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
-        <item name="android:fontFamily">@font/montserrat_bold</item>
-        <item name="fontFamily">@font/montserrat_bold</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="fontFamily">@font/montserrat_semibold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
     <style name="TextAppearance.SpaceDelivery.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
