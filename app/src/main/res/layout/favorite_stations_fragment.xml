@@ -24,13 +24,12 @@
         android:id="@+id/emptyImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:alpha="0.5"
+        android:alpha="0.8"
         android:src="@drawable/ic_planet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="DUNYA" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/emptyTextView"
@@ -38,13 +37,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline5"
+        android:text="@string/you_dont_have_favorite_station"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emptyImageView"
-        app:layout_constraintVertical_bias="0"
-        android:text="@string/you_dont_have_favorite_station" />
+        app:layout_constraintVertical_bias="0" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/emptyGroup"

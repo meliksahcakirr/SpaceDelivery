@@ -16,6 +16,4 @@ class StatisticsViewModel(repository: ISpaceDeliveryRepository) : ViewModel() {
             emptyList()
         }
     }
-
-
 }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MaterialCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/shuttleNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="FALCON X" />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+            app:layout_constraintBottom_toBottomOf="@id/shuttleNameTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/shuttleNameTextView"
+            tools:text="11/29/2020" />
+
+        <ImageView
+            android:id="@+id/ugsImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_space_suit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shuttleNameTextView" />
+
+        <TextView
+            android:id="@+id/ugsTextView"
+            style="@style/StatisticsTextViewStyle"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/ugsImageView"
+            app:layout_constraintStart_toEndOf="@id/ugsImageView"
+            app:layout_constraintTop_toTopOf="@id/ugsImageView"
+            tools:text="10000" />
+
+        <ImageView
+            android:id="@+id/eusImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_timer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shuttleNameTextView"
+            app:tint="?attr/colorSecondary" />
+
+        <TextView
+            android:id="@+id/eusTextView"
+            style="@style/StatisticsTextViewStyle"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/eusImageView"
+            app:layout_constraintStart_toEndOf="@id/eusImageView"
+            app:layout_constraintTop_toTopOf="@id/eusImageView"
+            tools:text="200" />
+
+        <ImageView
+            android:id="@+id/stationImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_planet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shuttleNameTextView" />
+
+        <TextView
+            android:id="@+id/stationTextView"
+            style="@style/StatisticsTextViewStyle"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/stationImageView"
+            app:layout_constraintStart_toEndOf="@id/stationImageView"
+            app:layout_constraintTop_toTopOf="@id/stationImageView"
+            tools:text="7" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

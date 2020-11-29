@@ -33,4 +33,5 @@
     <string name="game_over_shuttle_name">Game Over, %1$s!</string>
     <string name="statistics">Statistics</string>
     <string name="start_over">Start Over</string>
+    <string name="you_dont_have_any_statistics">You don\'t have any statistics</string>
 </resources>

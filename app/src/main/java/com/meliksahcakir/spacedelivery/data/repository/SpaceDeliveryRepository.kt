@@ -9,6 +9,7 @@ import com.meliksahcakir.spacedelivery.data.statistics.IStatisticsSource
 import com.meliksahcakir.spacedelivery.utils.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import timber.log.Timber
 
 class SpaceDeliveryRepository(
     private val localDataSource: ILocalDataSource,
@@ -53,18 +54,27 @@ class SpaceDeliveryRepository(
                 localDataSource.addStation(station)
             }
         } else {
+            localDataSource.getStations()
             localDataSource.resetStations()
             throw (remoteStations as Result.Error).exception
         }
     }
 
     override suspend fun refreshStations() {
-        updateStationsByRemoteDataSource()
+        try {
+            updateStationsByRemoteDataSource()
+        } catch (e: Exception) {
+            Timber.e(e)
+        }
     }
 
     override suspend fun getStation(name: String, forceUpdate: Boolean): Result<Station> {
         if (forceUpdate) {
-            updateStationsByRemoteDataSource()
+            try {
+                updateStationsByRemoteDataSource()
+            } catch (e: Exception) {
+                Timber.e(e)
+            }
         }
         return localDataSource.getStation(name)
     }

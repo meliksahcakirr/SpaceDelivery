@@ -19,7 +19,7 @@ class SplashViewModel(private val repository: ISpaceDeliveryRepository) : ViewMo
     init {
         start()
         viewModelScope.launch {
-            delay(2000)
+            delay(2500)
             _navigateToNextScreen.postValue(Event(Unit))
         }
     }

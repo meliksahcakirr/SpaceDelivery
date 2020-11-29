@@ -1,34 +1,31 @@
 package com.meliksahcakir.spacedelivery.utils
 
 import android.content.Context
-import androidx.annotation.VisibleForTesting
 import androidx.room.Room
 import com.meliksahcakir.spacedelivery.data.local.ILocalDataSource
 import com.meliksahcakir.spacedelivery.data.local.LocalDataSource
-import com.meliksahcakir.spacedelivery.data.local.StationsDatabase
 import com.meliksahcakir.spacedelivery.data.remote.RemoteDataSource
 import com.meliksahcakir.spacedelivery.data.repository.ISpaceDeliveryRepository
+import com.meliksahcakir.spacedelivery.data.repository.SpaceDeliveryDatabase
 import com.meliksahcakir.spacedelivery.data.repository.SpaceDeliveryRepository
 import com.meliksahcakir.spacedelivery.data.statistics.IStatisticsSource
-import com.meliksahcakir.spacedelivery.data.statistics.StatisticsDatabase
 import com.meliksahcakir.spacedelivery.data.statistics.StatisticsSource
 
 object ServiceLocator {
     private val lock = Any()
-    private var stationsDatabase: StationsDatabase? = null
-    private var statisticsDatabase: StatisticsDatabase? = null
+    private var database: SpaceDeliveryDatabase? = null
 
     @Volatile
     var repository: ISpaceDeliveryRepository? = null
-        @VisibleForTesting set
+    //@VisibleForTesting set
 
-    fun provideStationsRepository(context: Context): ISpaceDeliveryRepository {
+    fun provideSpaceDeliveryRepository(context: Context): ISpaceDeliveryRepository {
         synchronized(this) {
-            return repository ?: createStationsRepository(context)
+            return repository ?: createSpaceDeliveryRepository(context)
         }
     }
 
-    private fun createStationsRepository(context: Context): ISpaceDeliveryRepository {
+    private fun createSpaceDeliveryRepository(context: Context): ISpaceDeliveryRepository {
         val repo = SpaceDeliveryRepository(
             createLocalDataSource(context),
             RemoteDataSource,
@@ -39,36 +36,26 @@ object ServiceLocator {
     }
 
     private fun createLocalDataSource(context: Context): ILocalDataSource {
-        val database = stationsDatabase ?: createStationsDatabase(context)
+        val database = database ?: createDatabase(context)
         return LocalDataSource(database.stationsDao())
     }
 
-    private fun createStationsDatabase(context: Context): StationsDatabase {
+    private fun createDatabase(context: Context): SpaceDeliveryDatabase {
         val db = Room.databaseBuilder(
             context.applicationContext,
-            StationsDatabase::class.java,
-            "Stations.db"
-        ).fallbackToDestructiveMigration().build()
-        stationsDatabase = db
+            SpaceDeliveryDatabase::class.java,
+            "SpaceDelivery.db"
+        ).build()
+        database = db
         return db
     }
 
     private fun createStatisticsSource(context: Context): IStatisticsSource {
-        val database = statisticsDatabase ?: createStatisticsDatabase(context)
+        val database = database ?: createDatabase(context)
         return StatisticsSource(database.statisticsDao())
     }
 
-    private fun createStatisticsDatabase(context: Context): StatisticsDatabase {
-        val db = Room.databaseBuilder(
-            context.applicationContext,
-            StatisticsDatabase::class.java,
-            "Stations.db"
-        ).fallbackToDestructiveMigration().build()
-        statisticsDatabase = db
-        return db
-    }
-
-    @VisibleForTesting
+    /*@VisibleForTesting
     fun resetRepository() {
         synchronized(lock) {
             // Clear all data to avoid test pollution.
@@ -84,5 +71,5 @@ object ServiceLocator {
             statisticsDatabase = null
             repository = null
         }
-    }
+    }*/
 }

@@ -190,8 +190,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchCardView"
             app:layout_constraintWidth_max="200dp"
-            app:layout_constraintWidth_min="150dp"
-            tools:text="DUNYA" />
+            app:layout_constraintWidth_min="150dp" />
 
         <TextView
             android:id="@+id/emptyTextView"
@@ -199,13 +198,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline5"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/emptyImageView"
             app:layout_constraintVertical_bias="0"
-            tools:text="@string/there_is_no_planet_to_travel" />
+            android:text="@string/there_is_no_planet_to_travel" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stationRecyclerView"

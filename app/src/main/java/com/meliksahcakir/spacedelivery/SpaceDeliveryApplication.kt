@@ -8,7 +8,7 @@ import timber.log.Timber
 class SpaceDeliveryApplication : Application() {
 
     val repository: ISpaceDeliveryRepository
-        get() = ServiceLocator.provideStationsRepository(this)
+        get() = ServiceLocator.provideSpaceDeliveryRepository(this)
 
     override fun onCreate() {
         super.onCreate()
