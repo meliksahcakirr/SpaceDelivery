@@ -4,9 +4,9 @@
 
     <style name="Base.Theme.SpaceDelivery" parent="Base.Theme.App">
         <item name="colorPrimary">@color/blueGrayDark</item>
-        <item name="colorPrimaryVariant">@color/blueGrayLight</item>
-        <item name="colorSecondary">@color/blueLight</item>
-        <item name="colorSecondaryVariant">@color/blueDark</item>
+        <item name="colorPrimaryVariant">@color/blueGrayDarkVariant</item>
+        <item name="colorSecondary">@color/orangeLight</item>
+        <item name="colorSecondaryVariant">@color/orangeDark</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorError">@color/redDark</item>
@@ -30,7 +30,7 @@
     </style>
 
     <style name="Base.Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/blueGrayDark</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:navigationBarColor">?android:colorBackground</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
@@ -60,7 +60,7 @@
         <item name="android:valueTo">13</item>
         <item name="android:textAlignment">center</item>
         <item name="labelBehavior">floating</item>
-        <item name="trackColorActive">@color/adaptiveOrange</item>
+        <item name="trackColorActive">?attr/colorSecondary</item>
         <item name="trackHeight">10dp</item>
     </style>
 
@@ -77,7 +77,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAppearance">@style/TextAppearance.SpaceDelivery.Headline5</item>
-        <item name="android:textColor">@color/adaptiveOrange</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
     </style>
 
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">

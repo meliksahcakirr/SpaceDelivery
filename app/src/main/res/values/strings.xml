@@ -21,11 +21,10 @@
     <string name="station_cannot_be_found">Station cannot be found</string>
     <string name="all_the_stations_are_far_away">All the stations are far away</string>
     <string name="you_traveled_all_the_stations">You traveled all the stations!</string>
-    <string name="congrats_all_the_missions_are_completed" type="id">Congrats! All the missions are
-        completed.
-    </string>
+    <string name="you_are_out_of_ugs" type="id">You are out of space clothes</string>
     <string name="your_time_eus_is_up" type="id">Your time (EUS) is up!</string>
     <string name="your_spaceship_has_taken_too_much_damage" type="id">Your spaceship has taken too
         much damage
     </string>
+    <string name="you_dont_have_favorite_station">You don\'t have favorite station</string>
 </resources>

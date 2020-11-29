@@ -89,10 +89,9 @@ class MainViewModel(val repository: IStationsRepository) : ViewModel() {
         _health.value = 100
         handler.postDelayed(tickRunnable, 1000)
         _shuttleName.value = shuttle.name
-        _currentStation.value = Station.EARTH
         viewModelScope.launch {
             repository.resetStations()
-            onTravelClicked(Station.EARTH)
+            startDeliveryInEarth()
         }
     }
 
@@ -133,9 +132,21 @@ class MainViewModel(val repository: IStationsRepository) : ViewModel() {
                 repository.updateStation(station)
                 when {
                     _eus.value == 0 -> gameOver(R.string.your_time_eus_is_up)
-                    _ugs.value == 0 -> gameOver(R.string.congrats_all_the_missions_are_completed)
+                    _ugs.value == 0 -> gameOver(R.string.you_are_out_of_ugs)
                     else -> checkIfTheGameIsOver()
                 }
+            }
+        }
+    }
+
+    private fun startDeliveryInEarth() {
+        viewModelScope.launch {
+            val result = repository.getStation(Station.EARTH.name)
+            if (result is Result.Success) {
+                val station = result.data
+                _currentStation.value = station
+                station.completed = true
+                repository.updateStation(station)
             }
         }
     }

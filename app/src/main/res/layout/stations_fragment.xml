@@ -107,7 +107,7 @@
             app:layout_constraintBottom_toBottomOf="@id/shuttleNameTextView"
             app:layout_constraintEnd_toStartOf="@id/timerTextView"
             app:layout_constraintTop_toTopOf="@id/shuttleNameTextView"
-            app:tint="@color/adaptiveOrange" />
+            app:tint="?attr/colorSecondary" />
 
         <TextView
             android:id="@+id/timerTextView"

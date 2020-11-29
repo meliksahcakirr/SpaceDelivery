@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blueGrayLight">#466288</color>
+    <color name="blueGrayDarkVariant">#466288</color>
     <color name="blueGrayDark">#354a67</color>
+    <color name="blueGrayLightVariant">#718094</color>
+    <color name="blueGrayLight">#5d6e85</color>
     <color name="orangeLight">#fdb43a</color>
     <color name="orangeDark">#f57a21</color>
     <color name="blueLight">#4bbefd</color>
@@ -12,7 +14,4 @@
     <color name="grayDark">#202020</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="adaptiveOrange">#f57a21</color>
-    <color name="adaptiveBlue">#354a67</color>
 </resources>

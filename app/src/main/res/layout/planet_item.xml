@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="1000 / 2000"
+            tools:text="1000 / 2000"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="200 EUS"
+            tools:text="200 EUS"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/stockTextView" />
@@ -43,7 +43,7 @@
             app:layout_constraintBottom_toBottomOf="@id/distanceTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/stockTextView"
-            app:tint="@color/adaptiveOrange" />
+            app:tint="?attr/colorSecondary" />
 
         <ImageView
             android:id="@+id/planetImageView"

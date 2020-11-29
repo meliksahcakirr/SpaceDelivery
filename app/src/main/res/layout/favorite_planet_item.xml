@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MaterialCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/planetImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_planet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/planetTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline5"
+            app:layout_constraintBottom_toBottomOf="@id/planetImageView"
+            app:layout_constraintStart_toEndOf="@id/planetImageView"
+            app:layout_constraintTop_toTopOf="@id/planetImageView"
+            tools:text="PLANET X" />
+
+        <ImageView
+            android:id="@+id/favoriteImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_star_on"
+            app:layout_constraintBottom_toBottomOf="@id/planetImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/planetImageView"
+            app:tint="?attr/colorSecondary" />
+
+        <ImageView
+            android:id="@+id/eusImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_earth_rocket"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/planetImageView"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/eusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+            app:layout_constraintBottom_toBottomOf="@id/eusImageView"
+            app:layout_constraintStart_toEndOf="@id/eusImageView"
+            app:layout_constraintTop_toTopOf="@id/eusImageView"
+            tools:text="10 EUS" />
+
+        <TextView
+            android:id="@+id/stockTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/eusTextView"
+            tools:text="2000 / 20000" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
