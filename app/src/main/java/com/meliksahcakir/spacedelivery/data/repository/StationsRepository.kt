@@ -2,8 +2,10 @@ package com.meliksahcakir.spacedelivery.data.repository
 
 import androidx.lifecycle.LiveData
 import com.meliksahcakir.spacedelivery.data.Station
+import com.meliksahcakir.spacedelivery.data.Statistics
 import com.meliksahcakir.spacedelivery.data.local.ILocalDataSource
 import com.meliksahcakir.spacedelivery.data.remote.IRemoteDataSource
+import com.meliksahcakir.spacedelivery.data.statistics.IStatisticsSource
 import com.meliksahcakir.spacedelivery.utils.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 class StationsRepository(
     private val localDataSource: ILocalDataSource,
     private val remoteDataSource: IRemoteDataSource,
+    private val statisticsSource: IStatisticsSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IStationsRepository {
 
@@ -88,5 +91,17 @@ class StationsRepository(
 
     override suspend fun resetStations() {
         localDataSource.resetStations()
+    }
+
+    override suspend fun observeStatisticsList(): LiveData<Result<List<Statistics>>> {
+        return statisticsSource.observeStatisticsList()
+    }
+
+    override suspend fun addStatistics(statistics: Statistics) {
+        statisticsSource.addStatistics(statistics)
+    }
+
+    override suspend fun deleteStatistics(id: String) {
+        statisticsSource.deleteStatistics(id)
     }
 }

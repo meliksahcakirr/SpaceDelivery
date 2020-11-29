@@ -196,6 +196,9 @@ class MainViewModel(val repository: IStationsRepository) : ViewModel() {
         )
         _gameOver.value = statistics
         resetTimer()
+        viewModelScope.launch {
+            repository.addStatistics(statistics)
+        }
     }
 
     fun gameOverHandled() {
