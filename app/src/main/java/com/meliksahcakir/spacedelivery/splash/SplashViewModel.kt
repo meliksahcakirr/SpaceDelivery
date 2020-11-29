@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
+import com.meliksahcakir.spacedelivery.data.repository.ISpaceDeliveryRepository
 import com.meliksahcakir.spacedelivery.utils.Event
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel(private val repository: IStationsRepository) : ViewModel() {
+class SplashViewModel(private val repository: ISpaceDeliveryRepository) : ViewModel() {
 
     private var initialized = false
 

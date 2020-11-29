@@ -3,11 +3,9 @@ package com.meliksahcakir.spacedelivery.shuttle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.meliksahcakir.spacedelivery.R
 import com.meliksahcakir.spacedelivery.data.Shuttle
 import com.meliksahcakir.spacedelivery.utils.Event
-import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.min
 
@@ -30,6 +28,9 @@ class ShuttleViewModel : ViewModel() {
 
     private val _navigateToMainScreenEvent = MutableLiveData<Event<Shuttle>>()
     val navigateToMainScreenEvent: LiveData<Event<Shuttle>> = _navigateToMainScreenEvent
+
+    private val _navigateToStatisticsScreenEvent = MutableLiveData<Event<Unit>>()
+    val navigateToStatisticsScreenEvent: LiveData<Event<Unit>> = _navigateToStatisticsScreenEvent
 
     private val _snackBarMessage = MutableLiveData<Event<Int>>()
     val snackBarMessage: LiveData<Event<Int>> = _snackBarMessage
@@ -79,6 +80,10 @@ class ShuttleViewModel : ViewModel() {
             val shuttle = Shuttle(name, getCapacity(), getVelocity(), getDurability())
             _navigateToMainScreenEvent.value = Event(shuttle)
         }
+    }
+
+    fun onStatisticsButtonClicked() {
+        _navigateToStatisticsScreenEvent.value = Event(Unit)
     }
 
     private fun getDurability() = _durability.value ?: 1

@@ -10,17 +10,17 @@ import java.util.*
 data class Statistics(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    val id: String = UUID.randomUUID().toString(),
+    var id: String = UUID.randomUUID().toString(),
     @ColumnInfo(name = "name")
-    val name: String = "",
+    var name: String = "",
     @ColumnInfo(name = "spentEus")
-    val spentEus: Int = 0,
+    var spentEus: Int = 0,
     @ColumnInfo(name = "deliveredUgs")
-    val deliveredUgs: Int = 0,
+    var deliveredUgs: Int = 0,
     @ColumnInfo(name = "numberOfDestination")
-    val numberOfDestination: Int = 0,
+    var numberOfDestination: Int = 0,
     @ColumnInfo(name = "timestamp")
-    val timestamp: Long = System.currentTimeMillis(),
+    var timestamp: Long = System.currentTimeMillis(),
     @Ignore
-    val gameOverReason: Int = 0
+    var gameOverReason: Int = 0
 )

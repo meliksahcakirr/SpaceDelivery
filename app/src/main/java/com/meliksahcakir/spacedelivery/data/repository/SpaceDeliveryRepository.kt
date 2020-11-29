@@ -10,12 +10,12 @@ import com.meliksahcakir.spacedelivery.utils.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-class StationsRepository(
+class SpaceDeliveryRepository(
     private val localDataSource: ILocalDataSource,
     private val remoteDataSource: IRemoteDataSource,
     private val statisticsSource: IStatisticsSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : IStationsRepository {
+) : ISpaceDeliveryRepository {
 
     override fun observeStations(): LiveData<Result<List<Station>>> {
         return localDataSource.observeStations()
@@ -93,7 +93,7 @@ class StationsRepository(
         localDataSource.resetStations()
     }
 
-    override suspend fun observeStatisticsList(): LiveData<Result<List<Statistics>>> {
+    override fun observeStatisticsList(): LiveData<Result<List<Statistics>>> {
         return statisticsSource.observeStatisticsList()
     }
 

@@ -18,11 +18,12 @@ import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
 import com.meliksahcakir.spacedelivery.data.Station
 import com.meliksahcakir.spacedelivery.main.MainViewModel
 import com.meliksahcakir.spacedelivery.utils.EventObserver
+import com.meliksahcakir.spacedelivery.utils.GameInterface
 import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.game_over_dialog.view.*
 import kotlinx.android.synthetic.main.stations_fragment.*
 
-class StationsFragment : Fragment(), StationListAdapterListener {
+class StationsFragment : Fragment(), GameInterface, StationListAdapterListener {
 
     private val mainViewModel by activityViewModels<MainViewModel> {
         ViewModelFactory((requireActivity().application as SpaceDeliveryApplication).repository)
@@ -97,32 +98,6 @@ class StationsFragment : Fragment(), StationListAdapterListener {
         mainViewModel.currentStation.observe(viewLifecycleOwner) {
             currentStationTextView.text = it.name
             mAdapter.currentStation = it
-        }
-
-        mainViewModel.gameOver.observe(viewLifecycleOwner) {
-            if(it != null) {
-                val mView =
-                    LayoutInflater.from(requireContext()).inflate(R.layout.game_over_dialog, null)
-                mView.gameOverTextView.text =
-                    requireContext().getString(R.string.game_over_shuttle_name, it.name)
-                mView.gameOverReasonTextView.text = requireContext().getString(it.gameOverReason)
-                mView.deliveredUgsTextView.text = it.deliveredUgs.toString()
-                mView.totalEusTextView.text = it.spentEus.toString()
-                mView.stationTextView.text = it.numberOfDestination.toString()
-                val builder = AlertDialog.Builder(requireContext()).setView(mView).setCancelable(false)
-                val dialog = builder.show()
-                mView.statisticsButton.setOnClickListener {
-                    //TODO navigate to statistics
-                    mainViewModel.gameOverHandled()
-                    dialog.dismiss()
-                }
-                mView.startOverButton.setOnClickListener {
-                    //TODO navigate to shuttleFragment
-                    mainViewModel.gameOverHandled()
-                    dialog.dismiss()
-                    findNavController().navigateUp()
-                }
-            }
         }
 
         mainViewModel.snackBarMessage.observe(viewLifecycleOwner, EventObserver {

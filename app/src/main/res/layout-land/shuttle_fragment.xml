@@ -35,6 +35,17 @@
             app:layout_constraintStart_toStartOf="@id/circleImageView"
             app:layout_constraintTop_toTopOf="@id/circleImageView" />
 
+        <ImageView
+            android:id="@+id/statisticsImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_statistics"
+            app:layout_constraintBottom_toTopOf="@id/materialCardView"
+            app:layout_constraintEnd_toEndOf="@id/materialCardView"
+            app:tint="?attr/colorSecondary" />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
             android:layout_width="100dp"

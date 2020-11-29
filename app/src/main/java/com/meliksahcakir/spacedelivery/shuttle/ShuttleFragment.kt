@@ -66,6 +66,9 @@ class ShuttleFragment : Fragment() {
             mainViewModel.onShuttleSelected(it)
             findNavController().navigate(ShuttleFragmentDirections.actionShuttleFragmentToStationsFragment())
         })
+        shuttleViewModel.navigateToStatisticsScreenEvent.observe(viewLifecycleOwner, EventObserver {
+            findNavController().navigate(ShuttleFragmentDirections.actionShuttleFragmentToStatisticsFragment())
+        })
         shuttleViewModel.snackBarMessage.observe(viewLifecycleOwner, EventObserver {
             val snackBar = Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT)
             snackBar.show()
@@ -75,6 +78,9 @@ class ShuttleFragment : Fragment() {
         }
         startButton.setOnClickListener {
             shuttleViewModel.onStartButtonClicked()
+        }
+        statisticsImageView.setOnClickListener {
+            shuttleViewModel.onStatisticsButtonClicked()
         }
     }
 

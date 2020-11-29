@@ -25,6 +25,6 @@ interface StatisticsDao {
     @Query("DELETE FROM Statistics WHERE id = :id")
     suspend fun deleteStatistics(id: String)
 
-    @Query("DELETE FROM Stations")
+    @Query("DELETE FROM Statistics")
     suspend fun deleteStatisticsList()
 }

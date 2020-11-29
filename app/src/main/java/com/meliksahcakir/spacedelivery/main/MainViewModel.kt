@@ -6,13 +6,13 @@ import com.meliksahcakir.spacedelivery.R
 import com.meliksahcakir.spacedelivery.data.Shuttle
 import com.meliksahcakir.spacedelivery.data.Station
 import com.meliksahcakir.spacedelivery.data.Statistics
-import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
+import com.meliksahcakir.spacedelivery.data.repository.ISpaceDeliveryRepository
 import com.meliksahcakir.spacedelivery.utils.Event
 import com.meliksahcakir.spacedelivery.utils.Result
 import kotlinx.coroutines.launch
 import java.util.*
 
-class MainViewModel(val repository: IStationsRepository) : ViewModel() {
+class MainViewModel(val repository: ISpaceDeliveryRepository) : ViewModel() {
 
     companion object {
         private const val UGS_MULTIPLIER = 10000

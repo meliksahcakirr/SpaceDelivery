@@ -15,6 +15,9 @@
             app:destination="@id/stationsFragment"
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_close_exit" />
+        <action
+            android:id="@+id/action_shuttleFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
     </fragment>
 
     <fragment
@@ -28,5 +31,18 @@
         android:name="com.meliksahcakir.spacedelivery.stations.StationsFragment"
         android:label="station_fragment"
         tools:layout="@layout/stations_fragment" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.meliksahcakir.spacedelivery.statistics.StatisticsFragment"
+        android:label="statistics_fragment"
+        tools:layout="@layout/statistics_fragment" >
+        <action
+            android:id="@+id/action_statisticsFragment_to_shuttleFragment"
+            app:destination="@id/shuttleFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popUpTo="@id/shuttleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

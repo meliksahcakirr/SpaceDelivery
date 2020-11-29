@@ -5,7 +5,7 @@ import com.meliksahcakir.spacedelivery.data.Station
 import com.meliksahcakir.spacedelivery.data.Statistics
 import com.meliksahcakir.spacedelivery.utils.Result
 
-interface IStationsRepository {
+interface ISpaceDeliveryRepository {
 
     fun observeStations(): LiveData<Result<List<Station>>>
 
@@ -29,7 +29,7 @@ interface IStationsRepository {
 
     suspend fun resetStations()
 
-    suspend fun observeStatisticsList(): LiveData<Result<List<Statistics>>>
+    fun observeStatisticsList(): LiveData<Result<List<Statistics>>>
 
     suspend fun addStatistics(statistics: Statistics)
 

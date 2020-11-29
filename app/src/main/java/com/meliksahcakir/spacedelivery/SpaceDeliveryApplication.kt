@@ -1,13 +1,13 @@
 package com.meliksahcakir.spacedelivery
 
 import android.app.Application
-import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
+import com.meliksahcakir.spacedelivery.data.repository.ISpaceDeliveryRepository
 import com.meliksahcakir.spacedelivery.utils.ServiceLocator
 import timber.log.Timber
 
 class SpaceDeliveryApplication : Application() {
 
-    val repository: IStationsRepository
+    val repository: ISpaceDeliveryRepository
         get() = ServiceLocator.provideStationsRepository(this)
 
     override fun onCreate() {

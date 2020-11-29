@@ -12,10 +12,11 @@ import com.meliksahcakir.spacedelivery.R
 import com.meliksahcakir.spacedelivery.SpaceDeliveryApplication
 import com.meliksahcakir.spacedelivery.data.Station
 import com.meliksahcakir.spacedelivery.main.MainViewModel
+import com.meliksahcakir.spacedelivery.utils.GameInterface
 import com.meliksahcakir.spacedelivery.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.favorite_stations_fragment.*
 
-class FavoriteStationsFragment : Fragment(), FavoriteStationListAdapterListener {
+class FavoriteStationsFragment : Fragment(), GameInterface, FavoriteStationListAdapterListener {
 
     private val mainViewModel by activityViewModels<MainViewModel> {
         ViewModelFactory((requireActivity().application as SpaceDeliveryApplication).repository)

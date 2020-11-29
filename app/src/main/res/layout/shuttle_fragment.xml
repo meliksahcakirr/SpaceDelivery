@@ -27,6 +27,17 @@
             app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <ImageView
+            android:id="@+id/statisticsImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_statistics"
+            app:layout_constraintBottom_toTopOf="@id/materialCardView"
+            app:layout_constraintEnd_toEndOf="@id/materialCardView"
+            app:tint="?attr/colorSecondary" />
+
+        <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="20dp"

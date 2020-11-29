@@ -7,8 +7,8 @@ import com.meliksahcakir.spacedelivery.data.local.ILocalDataSource
 import com.meliksahcakir.spacedelivery.data.local.LocalDataSource
 import com.meliksahcakir.spacedelivery.data.local.StationsDatabase
 import com.meliksahcakir.spacedelivery.data.remote.RemoteDataSource
-import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
-import com.meliksahcakir.spacedelivery.data.repository.StationsRepository
+import com.meliksahcakir.spacedelivery.data.repository.ISpaceDeliveryRepository
+import com.meliksahcakir.spacedelivery.data.repository.SpaceDeliveryRepository
 import com.meliksahcakir.spacedelivery.data.statistics.IStatisticsSource
 import com.meliksahcakir.spacedelivery.data.statistics.StatisticsDatabase
 import com.meliksahcakir.spacedelivery.data.statistics.StatisticsSource
@@ -19,17 +19,17 @@ object ServiceLocator {
     private var statisticsDatabase: StatisticsDatabase? = null
 
     @Volatile
-    var repository: IStationsRepository? = null
+    var repository: ISpaceDeliveryRepository? = null
         @VisibleForTesting set
 
-    fun provideStationsRepository(context: Context): IStationsRepository {
+    fun provideStationsRepository(context: Context): ISpaceDeliveryRepository {
         synchronized(this) {
             return repository ?: createStationsRepository(context)
         }
     }
 
-    private fun createStationsRepository(context: Context): IStationsRepository {
-        val repo = StationsRepository(
+    private fun createStationsRepository(context: Context): ISpaceDeliveryRepository {
+        val repo = SpaceDeliveryRepository(
             createLocalDataSource(context),
             RemoteDataSource,
             createStatisticsSource(context)
