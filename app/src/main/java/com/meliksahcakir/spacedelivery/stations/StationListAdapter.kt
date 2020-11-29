@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.meliksahcakir.spacedelivery.R
 import com.meliksahcakir.spacedelivery.data.Station
+import com.meliksahcakir.spacedelivery.utils.hideKeyboard
 import kotlinx.android.synthetic.main.planet_item.view.*
 
 class StationListAdapter(private val listener: StationListAdapterListener) :
@@ -75,6 +76,7 @@ class StationViewHolder(
             listener.onFavoriteChanged(station, favorite)
         }
         travelButton.setOnClickListener {
+            it.hideKeyboard()
             listener.onTravelClicked(station)
         }
     }

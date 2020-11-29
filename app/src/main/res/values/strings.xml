@@ -27,4 +27,10 @@
         much damage
     </string>
     <string name="you_dont_have_favorite_station">You don\'t have favorite station</string>
+    <string name="traveled_stations">Traveled Stations</string>
+    <string name="total_travel_time_in_eus">Total Travel Time (EUS)</string>
+    <string name="delivered_ugs">Delivered UGS</string>
+    <string name="game_over_shuttle_name">Game Over, %1$s!</string>
+    <string name="statistics">Statistics</string>
+    <string name="start_over">Start Over</string>
 </resources>

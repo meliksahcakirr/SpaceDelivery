@@ -1,6 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:elevation="24dp"
+        android:src="@drawable/ic_shuttle"
+        app:layout_constraintBottom_toBottomOf="@id/circleImageView"
+        app:layout_constraintEnd_toEndOf="@id/circleImageView"
+        app:layout_constraintStart_toStartOf="@id/circleImageView"
+        app:layout_constraintTop_toTopOf="@id/circleImageView" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:elevation="16dp"
+        android:src="@android:color/transparent"
+        app:civ_border_overlay="true"
+        app:civ_circle_background_color="@color/blueGrayLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gameOverTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circleImageView"
+        tools:text="Game Over, Falcon" />
+
+    <TextView
+        android:id="@+id/gameOverReasonTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+        android:textColor="@color/redLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameOverTextView"
+        tools:text="Game OverGame OverGame OverGame OverGame OverGame OverGame OverGame OverGame OverGame OverGame Over" />
+
+    <TextView
+        android:id="@+id/deliveredUgsTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:text="@string/delivered_ugs"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+        app:layout_constraintBottom_toBottomOf="@id/deliveredUgsTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/deliveredUgsTextView" />
+
+    <TextView
+        android:id="@+id/deliveredUgsTextView"
+        style="@style/ShuttleTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameOverReasonTextView"
+        tools:text="100" />
+
+    <TextView
+        android:id="@+id/totalEusTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:text="@string/total_travel_time_in_eus"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+        app:layout_constraintBottom_toBottomOf="@id/totalEusTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/totalEusTextView" />
+
+    <TextView
+        android:id="@+id/totalEusTextView"
+        style="@style/ShuttleTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deliveredUgsTextView"
+        tools:text="100" />
+
+    <TextView
+        android:id="@+id/stationTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:text="@string/traveled_stations"
+        android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+        app:layout_constraintBottom_toBottomOf="@id/stationTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stationTextView" />
+
+    <TextView
+        android:id="@+id/stationTextView"
+        style="@style/ShuttleTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalEusTextView"
+        tools:text="10" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/statisticsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/statistics"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/startOverButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stationTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startOverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/start_over"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/statisticsButton"
+        app:layout_constraintTop_toBottomOf="@id/stationTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

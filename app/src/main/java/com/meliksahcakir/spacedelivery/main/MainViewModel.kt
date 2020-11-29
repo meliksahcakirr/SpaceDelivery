@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.meliksahcakir.spacedelivery.R
 import com.meliksahcakir.spacedelivery.data.Shuttle
 import com.meliksahcakir.spacedelivery.data.Station
+import com.meliksahcakir.spacedelivery.data.Statistics
 import com.meliksahcakir.spacedelivery.data.repository.IStationsRepository
 import com.meliksahcakir.spacedelivery.utils.Event
 import com.meliksahcakir.spacedelivery.utils.Result
@@ -13,25 +14,34 @@ import java.util.*
 
 class MainViewModel(val repository: IStationsRepository) : ViewModel() {
 
+    companion object {
+        private const val UGS_MULTIPLIER = 10000
+        private const val EUS_MULTIPLIER = 20
+        private const val DS_MULTIPLIER = 10000
+        private const val TIMER_MULTIPLIER = 10
+        private const val MAX_HEALTH = 100
+        private const val HEALTH_DECREMENT = 10
+    }
+
     private var shuttle: Shuttle? = null
 
-    private val _ugs = MutableLiveData(10000)
+    private val _ugs = MutableLiveData(UGS_MULTIPLIER)
     val ugs: LiveData<Int> = _ugs
 
-    private val _eus = MutableLiveData(1000)
+    private val _eus = MutableLiveData(EUS_MULTIPLIER)
     val eus: LiveData<Int> = _eus
 
-    private val _ds = MutableLiveData(10000)
+    private val _ds = MutableLiveData(DS_MULTIPLIER)
     val ds: LiveData<Int> = _ds
 
-    private val _health = MutableLiveData(100)
+    private val _health = MutableLiveData(MAX_HEALTH)
     val health: LiveData<Int> = _health
 
-    private val _timer = MutableLiveData(10)
+    private val _timer = MutableLiveData(TIMER_MULTIPLIER)
     val timer: LiveData<Int> = _timer
 
-    private val _gameOver = MutableLiveData<Event<Int>>()
-    val gameOver: LiveData<Event<Int>> = _gameOver
+    private val _gameOver = MutableLiveData<Statistics?>()
+    val gameOver: LiveData<Statistics?> = _gameOver
 
     private val _shuttleName = MutableLiveData("")
     val shuttleName: LiveData<String> = _shuttleName
@@ -67,8 +77,8 @@ class MainViewModel(val repository: IStationsRepository) : ViewModel() {
         override fun run() {
             _timer.value?.let {
                 if (it == 0) {
-                    _health.value = _health.value?.minus(10)
-                    _timer.value = shuttle?.durability?.times(10)
+                    _health.value = _health.value?.minus(HEALTH_DECREMENT)
+                    _timer.value = shuttle?.durability?.times(TIMER_MULTIPLIER)
                     if (_health.value == 0) {
                         gameOver(R.string.your_spaceship_has_taken_too_much_damage)
                         return@let
@@ -82,11 +92,11 @@ class MainViewModel(val repository: IStationsRepository) : ViewModel() {
 
     fun onShuttleSelected(shuttle: Shuttle) {
         this.shuttle = shuttle
-        _ugs.value = shuttle.capacity * 10000
-        _eus.value = shuttle.velocity * 20
-        _ds.value = shuttle.durability * 10000
-        _timer.value = shuttle.durability * 10
-        _health.value = 100
+        _ugs.value = shuttle.capacity * UGS_MULTIPLIER
+        _eus.value = shuttle.velocity * EUS_MULTIPLIER
+        _ds.value = shuttle.durability * DS_MULTIPLIER
+        _timer.value = shuttle.durability * TIMER_MULTIPLIER
+        _health.value = MAX_HEALTH
         handler.postDelayed(tickRunnable, 1000)
         _shuttleName.value = shuttle.name
         viewModelScope.launch {
@@ -173,7 +183,22 @@ class MainViewModel(val repository: IStationsRepository) : ViewModel() {
     }
 
     private fun gameOver(messageId: Int) {
-        _gameOver.value = Event(messageId)
+        val deliveredUgs = shuttle?.capacity?.times(UGS_MULTIPLIER)?.minus(_ugs.value ?: 0) ?: 0
+        val spentEus = shuttle?.velocity?.times(EUS_MULTIPLIER)?.minus(_eus.value ?: 0) ?: 0
+        val numberOfDestination = stations.value?.filter { it.completed }?.size?.minus(1) ?: 0
+        val name = _shuttleName.value ?: ""
+        val statistics = Statistics(
+            spentEus = spentEus,
+            name = name,
+            deliveredUgs = deliveredUgs,
+            gameOverReason = messageId,
+            numberOfDestination = numberOfDestination
+        )
+        _gameOver.value = statistics
         resetTimer()
+    }
+
+    fun gameOverHandled() {
+        _gameOver.value = null
     }
 }
